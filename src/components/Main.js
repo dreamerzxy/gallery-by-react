@@ -102,15 +102,15 @@ var ControllerUnit = React.createClass({
   },
 
   render: function(){
-    var controllerUnitClassName = "controller-unit";
+    var controllerUnitClassName = 'controller-unit';
 
     //如果对应的是居中的图片，显示控制按钮的居中态
     if(this.props.arrange.isCenter){
-      controllerUnitClassName += " is-center";
+      controllerUnitClassName += ' is-center';
 
       //如果同时对应的是翻转图片，显示控制按钮的翻转态
       if(this.props.arrange.isInverse){
-        controllerUnitClassName += " is-inverse";
+        controllerUnitClassName += ' is-inverse';
       }
     }
 
