@@ -121,6 +121,7 @@ var ControllerUnit = React.createClass({
 })
 
 
+//"大管家"：负责所有数据及数据的状态切换
 var GalleryByReactApp = React.createClass({
 
   //各个位置点（定义时先初始化为0，后面再重新初始化赋值）
@@ -129,12 +130,12 @@ var GalleryByReactApp = React.createClass({
       left: 0,
       right: 0
     },
-    hPosRange: { //水平方向的取值范围
+    hPosRange: { //左右分区的取值范围
       leftSecX: [0,0],
       rightSecX: [0,0],
       y: [0,0]
     },
-    vPosRange:{ //垂直方向的取值范围
+    vPosRange:{ //上分区的取值范围
       x: [0,0],
       topY: [0,0]
     }
@@ -176,11 +177,13 @@ var GalleryByReactApp = React.createClass({
         vPosRangeX = vPosRange.x,
 
         imgsArrangeTopArr = [],
-        topImgNum = Math.floor(Math.random() * 2), //取1个或不取
-        topImgSpliceIndex = 0,
+        topImgNum = Math.floor(Math.random() * 2), //取1个或不取  左闭右开
+        topImgSpliceIndex = 0,  //标记上分区的图片是从数组中的哪个位置拿出来的
 
         //取出要布局居中的图片的状态信息
         imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex,1);
+        //splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。
+        //如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
 
     //centerIndex图片 居中,不旋转，在中间
     imgsArrangeCenterArr[0] = {

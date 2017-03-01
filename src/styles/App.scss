@@ -17,7 +17,7 @@ html, body{
 
 /* state -- start */
 .stage{
-  position: relative;
+  position: relative; //方便定位stage中的控制组件 controller-nav
 
   width: 100%;
   //height: 680px;
@@ -27,28 +27,28 @@ html, body{
 
 /* image -- start */
 .img-sec{
-  position: relative;
+  position: relative; //方便定位img-sec中的图片
 
-  width: 100%;
+  width: 100%; //由于img-sec是所有图片的父容器，图片会随机占满整个stage，所以img-sec的宽高均100%
   height: 100%;
-  overflow: hidden;
+  overflow: hidden;  //图片超出范围时要隐藏
 
   background-color: #ddd;
 
   perspective: 1800px;
 
-  @at-root {
+  @at-root {  //避免层级过深的性能问题
     .img-figure{
-      position: absolute;
+      position: absolute; //为了通过指定left top值(默认均为0)来绝对定位图片位置
 
-      width: 320px;
-      height: 360px;
+      width: 320px;  //每张图片是240*240px,留出左右各40px的padding
+      height: 360px;  //留出上下各40px的padding及title的40px
       margin: 0;
       padding: 40px;
 
       background-color: #fff;
 
-      box-sizing: border-box;
+      box-sizing: border-box;  //让width包含padding及border
       cursor: pointer;
       transform-origin: 0 50% 0;
       transform-style: preserve-3d;
@@ -105,14 +105,14 @@ html, body{
 
 /* controller -- start */
 .controller-nav {
-  position: absolute;
+  position: absolute;  //将其绝对定位到舞台底部30px处
   left: 0px;
   bottom: 30px;
-  z-index: 101;
+  z-index: 101;   //为保证congtroller-nav永远在图片上方，设为10的平方级
 
-  width: 100%;
+  width: 100%;  //width占满整个stage
 
-  text-align: center;
+  text-align: center; //让其中的单个控制按钮居中显示
 
   @at-root {
     .controller-unit{
